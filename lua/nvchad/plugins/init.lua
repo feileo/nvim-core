@@ -36,9 +36,6 @@ return {
       scope = { char = "│", highlight = "IblScopeChar" },
     },
     config = function(_, opts)
-      print(opts)
-      vim.notify("这是一个信息消息", vim.log.levels.INFO)
-
       dofile(vim.g.base46_cache .. "blankline")
 
       local hooks = require "ibl.hooks"
