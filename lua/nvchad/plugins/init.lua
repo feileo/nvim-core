@@ -9,7 +9,7 @@ return {
   },
 
   {
-    "nvchad/ui",
+    "feileo/nvim-ui",
     lazy = false,
     config = function()
       require "nvchad"
@@ -85,7 +85,7 @@ return {
   -- lsp stuff
   {
     "williamboman/mason.nvim",
-    cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     opts = function()
       return require "nvchad.configs.mason"
     end,
