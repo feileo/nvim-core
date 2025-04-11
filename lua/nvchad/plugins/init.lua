@@ -9,7 +9,7 @@ return {
   },
 
   {
-    "feileo/nvim-ui",
+    "nvchad/ui",
     lazy = false,
     config = function()
       require "nvchad"
