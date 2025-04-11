@@ -19,6 +19,9 @@ return {
         ["q"] = require("telescope.actions").close,
         ["<Tab>"] = require("telescope.actions").move_selection_next,
       },
+      i = {
+        ["<Tab>"] = require("telescope.actions").move_selection_next,
+      },
     },
   },
 
