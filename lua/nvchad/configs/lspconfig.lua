@@ -7,17 +7,41 @@ M.on_attach = function(_, bufnr)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
 
-  map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
-  map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
-  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
-  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Remove workspace folder")
+  -- map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
+  -- map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
+  -- map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
+  -- map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Remove workspace folder")
 
-  map("n", "<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts "List workspace folders")
+  -- map("n", "<leader>wl", function()
+  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  -- end, opts "List workspace folders")
 
-  map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
-  map("n", "<leader>ra", require "nvchad.lsp.renamer", opts "NvRenamer")
+  -- map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
+  -- map("n", "<leader>ra", require "nvchad.lsp.renamer", opts "NvRenamer")
+  map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts "LSP hover doc")
+  map("n", "<2-LeftMouse>", "<cmd>Lspsaga goto_definition<CR>", opts "LSP goto definition")
+  map("n", "<A-LeftMouse>", "<cmd>Lspsaga goto_definition<CR>", opts "LSP goto definition")
+  map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts "LSP goto definition")
+  map("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts "LSP goto type definition")
+  map("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts "LSP peek definition")
+  map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>", opts "LSP peek type definition")
+  map("n", "gf", "<cmd>Lspsaga finder<CR>", opts "LSP finder")
+  map("n", "gi", "<cmd>Lspsaga finder imp<CR>", opts "LSP implementation")
+  map("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts "LSP references")
+  map("n", "gn", require "nvchad.lsp.renamer", opts "NvRenamer")
+  -- map("n", "gn", "<cmd>Lspsaga rename<CR>", opts "LSP rename")
+  map("n", "gN", "<cmd>Lspsaga rename ++project<CR>", opts "LSP rename project")
+
+  map("n", "gca", "<cmd>Lspsaga code_action<CR>", opts "LSP code action")
+  map("n", "gco", "<cmd>Lspsaga outgoing_calls<CR>", opts "LSP outgoing_calls")
+  map("n", "gci", "<cmd>Lspsaga incoming_calls<CR>", opts "LSP incoming_calls")
+
+  map("n", "<leader>d", "<cmd>Lspsaga goto_definition<CR>", opts "LSP goto definition")
+  map("n", "<leader>D", "<cmd>Lspsaga goto_type_definition<CR>", opts "LSP goto type definition")
+  map("n", "<leader>p", "<cmd>Lspsaga peek_definition<CR>", opts "LSP peek definition")
+  map("n", "<leader>e", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts "LSP show buf diagnostics")
+  map("n", "<leader>E", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts "LSP show work diagnostics")
+  map("n", "<leader>0", "<cmd>Lspsaga outline<CR>", opts "LSP symbols outline")
 end
 
 -- disable semanticTokens
