@@ -143,13 +143,13 @@ return {
     opts = function()
       return require "nvchad.configs.cmp"
     end,
-    formatting = {
-      format = lspkind.cmp_format({
-        mode = "symbol",
-        max_width = 50,
-        symbol_map = { Supermaven = "" }
-      })
-    }
+    -- formatting = {
+    --   format = lspkind.cmp_format({
+    --     mode = "symbol",
+    --     max_width = 50,
+    --     symbol_map = { Supermaven = "" }
+    --   })
+    -- }
   },
 
   {
