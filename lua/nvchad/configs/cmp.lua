@@ -2,7 +2,6 @@ dofile(vim.g.base46_cache .. "cmp")
 
 local cmp = require "cmp"
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 
 local options = {
   completion = { completeopt = "menu,menuone" },
@@ -56,14 +55,6 @@ local options = {
     { name = "async_path" },
     { name = "supermaven" },
   },
-
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol",
-      max_width = 50,
-      symbol_map = { Supermaven = "" }
-    })
-  }
 }
 
 return vim.tbl_deep_extend("force", options, require "nvchad.cmp")
