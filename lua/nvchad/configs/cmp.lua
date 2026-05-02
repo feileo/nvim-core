@@ -1,13 +1,15 @@
 dofile(vim.g.base46_cache .. "cmp")
 
 local cmp = require "cmp"
+local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 local options = {
   completion = { completeopt = "menu,menuone" },
 
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
 
@@ -27,8 +29,8 @@ local options = {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif require("luasnip").expand_or_jumpable() then
-        require("luasnip").expand_or_jump()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -37,8 +39,8 @@ local options = {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif require("luasnip").jumpable(-1) then
-        require("luasnip").jump(-1)
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -52,7 +54,16 @@ local options = {
     { name = "nvim_lua" },
     { name = "neorg" },
     { name = "async_path" },
+    { name = "supermaven" },
   },
+
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol",
+      max_width = 50,
+      symbol_map = { Supermaven = "" }
+    })
+  }
 }
 
 return vim.tbl_deep_extend("force", options, require "nvchad.cmp")
